@@ -2,11 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { verifyToken } from "../utils/jwt";
 import { UserRole } from "../types/auth";
 
-/**
- * Protege las rutas que requieren autenticación.
- * Lee el header Authorization, valida el JWT y guarda el usuario en req.
- * Se usa un middleware sencillo para centralizar esta validación.
- */
+
 export function authenticate(req: Request, res: Response, next: NextFunction): void {
   try {
     const authorization: string | undefined = req.headers.authorization;
@@ -26,10 +22,7 @@ export function authenticate(req: Request, res: Response, next: NextFunction): v
   }
 }
 
-/**
- * Restringe una ruta a los roles recibidos.
- * Se mantiene como una función pequeña porque solo necesita comparar el rol.
- */
+
 export function authorizeRoles(...allowedRoles: UserRole[]) {
   return (req: Request, res: Response, next: NextFunction): void => {
     const user = (req as Request & { user?: { id: number; role: UserRole } }).user;

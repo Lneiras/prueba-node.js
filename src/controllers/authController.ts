@@ -2,12 +2,9 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import { comparePassword, hashPassword } from "../utils/password";
 import { generateToken } from "../utils/jwt";
-import { UserRole } from "../types/auth";
+import { UserRole } from "../types/auth
+ 
 
-/**
- * Registra un usuario.
- * Es público porque el enunciado permite seleccionar el rol durante el registro.
- */
 export async function register(req: Request, res: Response): Promise<void> {
   try {
     const { name, email, password, role } = req.body as {
@@ -53,10 +50,8 @@ export async function register(req: Request, res: Response): Promise<void> {
   }
 }
 
-/**
- * Inicia sesión y entrega un JWT.
- * Solo permite iniciar sesión con usuarios existentes y activos.
- */
+
+
 export async function login(req: Request, res: Response): Promise<void> {
   try {
     const { email, password } = req.body as { email?: string; password?: string };
