@@ -4,11 +4,7 @@ import { Clinic, Medicine, Warehouse, SupplyRequest } from "../models";
 import { RequestStatus } from "../models/SupplyRequest";
 import { createSupplyRequest, updateRequestStatus } from "../services/requestService";
 
-/**
- * Crea una solicitud de abastecimiento.
- * La lógica de negocio se mantiene en requestService para separar validación
- * y persistencia del manejo HTTP.
- */
+ 
 export async function createRequest(req: Request, res: Response): Promise<void> {
   try {
     const { clinicId, medicineId, quantity, warehouseId, status } = req.body as {
@@ -52,9 +48,7 @@ export async function createRequest(req: Request, res: Response): Promise<void> 
   }
 }
 
-/**
- * Actualiza el estado de una solicitud existente.
- */
+ 
 export async function changeRequestStatus(req: Request, res: Response): Promise<void> {
   try {
     const status = req.body.status as RequestStatus;
@@ -78,10 +72,7 @@ export async function changeRequestStatus(req: Request, res: Response): Promise<
   }
 }
 
-/**
- * Lista todas las solicitudes activas.
- * Incluye clínica, medicamento y almacén para facilitar la consulta.
- */
+ 
 export async function getActiveRequests(_req: Request, res: Response): Promise<void> {
   try {
     const requests = await SupplyRequest.findAll({
@@ -98,10 +89,7 @@ export async function getActiveRequests(_req: Request, res: Response): Promise<v
   }
 }
 
-/**
- * Consulta el historial completo de solicitudes.
- * Se conservan registros activos e inactivos para mantener trazabilidad.
- */
+ 
 export async function getRequestHistory(_req: Request, res: Response): Promise<void> {
   try {
     const requests = await SupplyRequest.findAll({
@@ -115,10 +103,7 @@ export async function getRequestHistory(_req: Request, res: Response): Promise<v
   }
 }
 
-/**
- * Consulta el historial de una clínica específica.
- * Primero valida que la clínica exista para entregar un error claro.
- */
+ 
 export async function getClinicRequestHistory(req: Request, res: Response): Promise<void> {
   try {
     const clinicId: number = Number(req.params.clinicId);
@@ -144,9 +129,7 @@ export async function getClinicRequestHistory(req: Request, res: Response): Prom
   }
 }
 
-/**
- * Lista todas las solicitudes para el CRUD administrativo.
- */
+ 
 export async function getAllRequests(_req: Request, res: Response): Promise<void> {
   try {
     const requests = await SupplyRequest.findAll({
@@ -182,11 +165,7 @@ export async function getRequestById(req: Request, res: Response): Promise<void>
   }
 }
 
-/**
- * Actualiza los datos básicos de una solicitud desde el CRUD de administrador.
- * Si se modifica la cantidad, se recomienda usar la creación normal para controlar inventario;
- * por eso este endpoint se limita a campos administrativos y estado.
- */
+ 
 export async function updateRequest(req: Request, res: Response): Promise<void> {
   try {
     const request = await SupplyRequest.findOne({
@@ -217,7 +196,7 @@ export async function updateRequest(req: Request, res: Response): Promise<void> 
 }
 
 /**
- * Elimina lógicamente una solicitud.
+ * Elimina una solicitud.
  */
 export async function deleteRequest(req: Request, res: Response): Promise<void> {
   try {
