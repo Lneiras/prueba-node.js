@@ -13,7 +13,7 @@ import { authenticate, authorizeRoles } from "../middlewares/authMiddleware";
 const router: Router = Router();
 
 /**
- * El CRUD de almacenes e inventario administrativo requiere rol ADMIN.
+ * El CRUD de almacenes e inventario administrativo requiere rol admin.
  */
 router.use(authenticate, authorizeRoles("ADMIN"));
 
