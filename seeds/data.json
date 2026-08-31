@@ -1,0 +1,73 @@
+{
+  "users": [
+    {
+      "name": "Administrador",
+      "email": "admin@riwimedicare.com",
+      "password": "123456",
+      "role": "ADMIN"
+    },
+    {
+      "name": "Gestor de Solicitudes",
+      "email": "gestor@riwimedicare.com",
+      "password": "123456",
+      "role": "MANAGER"
+    }
+  ],
+  "clinics": [
+    {
+      "name": "Clinica Norte",
+      "nit": "900123456-1",
+      "responsibleName": "Ana Perez",
+      "responsibleEmail": "ana@clinicanorte.com",
+      "responsiblePhone": "3001234567"
+    },
+    {
+      "name": "Centro Medico Sur",
+      "nit": "900987654-2",
+      "responsibleName": "Carlos Gomez",
+      "responsibleEmail": "carlos@centromedico.com",
+      "responsiblePhone": "3019876543"
+    }
+  ],
+  "warehouses": [
+    {
+      "name": "Almacen Principal",
+      "address": "Calle 10 # 20-30"
+    },
+    {
+      "name": "Almacen Secundario",
+      "address": "Carrera 40 # 50-60"
+    }
+  ],
+  "medicines": [
+    {
+      "name": "Acetaminofen 500mg",
+      "code": "MED-001",
+      "description": "Analgesico y antipiretico",
+      "unit": "tableta"
+    },
+    {
+      "name": "Ibuprofeno 400mg",
+      "code": "MED-002",
+      "description": "Antiinflamatorio",
+      "unit": "tableta"
+    }
+  ],
+  "inventories": [
+    {
+      "warehouseId": 1,
+      "medicineId": 1,
+      "quantity": 100
+    },
+    {
+      "warehouseId": 1,
+      "medicineId": 2,
+      "quantity": 80
+    },
+    {
+      "warehouseId": 2,
+      "medicineId": 1,
+      "quantity": 50
+    }
+  ]
+}
