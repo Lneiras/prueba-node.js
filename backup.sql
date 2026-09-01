@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS supply_requests (
     "updatedAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
- 
+
 INSERT INTO users (name, email, password, role)
 VALUES
 ('Administrador', 'admin@riwimedicare.com', 'b5ec09e5d6ed544fdae2e4ed2f041a21:87d053f7d9e2c0120937bf88646a0c686f574cf08578ea4d8a0d45a911151c20269fad3fde3752502f3ed90513f5d890bd71a309259a0f59bc4189973d457258', 'ADMIN'),

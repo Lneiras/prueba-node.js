@@ -104,9 +104,25 @@
  *         name: id
  *         required: true
  *         schema: { type: integer }
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string, example: Clinica Norte }
+ *               nit: { type: string, example: 900123456-1 }
+ *               responsibleName: { type: string, example: Ana Perez }
+ *               responsibleEmail: { type: string, example: ana@clinica.com }
+ *               responsiblePhone: { type: string, example: 3001234567 }
  *     responses:
  *       200:
  *         description: Clínica actualizada.
+ *       404:
+ *         description: Clínica no encontrada.
+ *       409:
+ *         description: NIT duplicado.
  *   delete:
  *     summary: Eliminación lógica de clínica
  *     tags: [Clinics]
@@ -135,9 +151,77 @@
  *     summary: Crear almacén
  *     tags: [Warehouses]
  *     security: [{ bearerAuth: [] }]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [name, address]
+ *             properties:
+ *               name: { type: string, example: Almacen Central }
+ *               address: { type: string, example: Calle 10 # 5-20 }
  *     responses:
  *       201:
  *         description: Almacén creado.
+ *       400:
+ *         description: Faltan campos obligatorios.
+ */
+
+/**
+ * @swagger
+ * /api/warehouses/{id}:
+ *   get:
+ *     summary: Consultar almacén
+ *     tags: [Warehouses]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Almacén encontrado.
+ *       404:
+ *         description: Almacén no encontrado.
+ *   put:
+ *     summary: Actualizar almacén
+ *     tags: [Warehouses]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string, example: Almacen Central }
+ *               address: { type: string, example: Calle 10 # 5-20 }
+ *     responses:
+ *       200:
+ *         description: Almacén actualizado.
+ *       404:
+ *         description: Almacén no encontrado.
+ *   delete:
+ *     summary: Eliminación lógica de almacén
+ *     tags: [Warehouses]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Almacén marcado como inactivo.
+ *       404:
+ *         description: Almacén no encontrado.
  */
 
 /**
@@ -159,6 +243,11 @@
  *     summary: Agregar inventario
  *     tags: [Warehouses]
  *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
  *     requestBody:
  *       required: true
  *       content:
@@ -190,9 +279,85 @@
  *     summary: Crear medicamento
  *     tags: [Medicines]
  *     security: [{ bearerAuth: [] }]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [name, code, description, unit]
+ *             properties:
+ *               name: { type: string, example: Acetaminofen 500mg }
+ *               code: { type: string, example: MED-001 }
+ *               description: { type: string, example: Analgesico y antipiretico }
+ *               unit: { type: string, example: Tableta }
  *     responses:
  *       201:
  *         description: Medicamento creado.
+ *       400:
+ *         description: Faltan campos obligatorios.
+ *       409:
+ *         description: Código duplicado.
+ */
+
+/**
+ * @swagger
+ * /api/medicines/{id}:
+ *   get:
+ *     summary: Consultar medicamento
+ *     tags: [Medicines]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Medicamento encontrado.
+ *       404:
+ *         description: Medicamento no encontrado.
+ *   put:
+ *     summary: Actualizar medicamento
+ *     tags: [Medicines]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name: { type: string, example: Acetaminofen 500mg }
+ *               code: { type: string, example: MED-001 }
+ *               description: { type: string, example: Analgesico y antipiretico }
+ *               unit: { type: string, example: Tableta }
+ *     responses:
+ *       200:
+ *         description: Medicamento actualizado.
+ *       404:
+ *         description: Medicamento no encontrado.
+ *       409:
+ *         description: Código duplicado.
+ *   delete:
+ *     summary: Eliminación lógica de medicamento
+ *     tags: [Medicines]
+ *     security: [{ bearerAuth: [] }]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Medicamento marcado como inactivo.
+ *       404:
+ *         description: Medicamento no encontrado.
  */
 
 /**

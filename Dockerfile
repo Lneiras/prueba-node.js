@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
+COPY . .
+
 EXPOSE 3000
 
-CMD ["npx", "tsx", "watch", "src/index.ts"]
+CMD ["npx", "ts-node-dev", "--respawn", "--transpile-only", "src/server.ts"]

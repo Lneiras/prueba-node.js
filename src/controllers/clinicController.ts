@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Clinic } from "../models/Clinic";
 
- 
+
 export async function getClinics(_req: Request, res: Response): Promise<void> {
   try {
     const clinics = await Clinic.findAll({ where: { isActive: true } });
@@ -11,7 +11,7 @@ export async function getClinics(_req: Request, res: Response): Promise<void> {
   }
 }
 
- 
+
 export async function getClinicById(req: Request, res: Response): Promise<void> {
   try {
     const clinic = await Clinic.findOne({

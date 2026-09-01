@@ -1,8 +1,13 @@
+import { User } from "./User";
 import { Clinic } from "./Clinic";
 import { Warehouse } from "./Warehouse";
 import { Medicine } from "./Medicine";
 import { Inventory } from "./Inventory";
 import { SupplyRequest } from "./SupplyRequest";
+
+
+Clinic.hasMany(User, { foreignKey: "clinicId" });
+User.belongsTo(Clinic, { foreignKey: "clinicId" });
 
 Clinic.hasMany(SupplyRequest, { foreignKey: "clinicId" });
 SupplyRequest.belongsTo(Clinic, { foreignKey: "clinicId" });
@@ -19,4 +24,4 @@ Inventory.belongsTo(Warehouse, { foreignKey: "warehouseId" });
 Medicine.hasMany(Inventory, { foreignKey: "medicineId" });
 Inventory.belongsTo(Medicine, { foreignKey: "medicineId" });
 
-export { Clinic, Warehouse, Medicine, Inventory, SupplyRequest };
+export { User, Clinic, Warehouse, Medicine, Inventory, SupplyRequest };

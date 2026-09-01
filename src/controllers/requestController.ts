@@ -4,7 +4,7 @@ import { Clinic, Medicine, Warehouse, SupplyRequest } from "../models";
 import { RequestStatus } from "../models/SupplyRequest";
 import { createSupplyRequest, updateRequestStatus } from "../services/requestService";
 
- 
+
 export async function createRequest(req: Request, res: Response): Promise<void> {
   try {
     const { clinicId, medicineId, quantity, warehouseId, status } = req.body as {
