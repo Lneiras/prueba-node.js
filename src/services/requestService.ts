@@ -2,7 +2,7 @@ import { sequelize } from "../config/database";
 import { Clinic, Medicine, Warehouse, Inventory, SupplyRequest } from "../models";
 import { RequestStatus } from "../models/SupplyRequest";
 
-const VALID_STATUSES: RequestStatus[] = [
+export const VALID_STATUSES: RequestStatus[] = [
   "PENDING",
   "APPROVED",
   "REJECTED",

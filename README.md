@@ -118,7 +118,7 @@ docker compose ps
 ### Ver los logs de la API
 
 ```bash
-docker compose logs -f api
+docker compose logs -f app
 ```
 
 ### Ver los logs de PostgreSQL

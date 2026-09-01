@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import { User } from "../models/User";
 import { comparePassword, hashPassword } from "../utils/password";
 import { generateToken } from "../utils/jwt";
-import { UserRole } from "../types/auth
- 
+import { UserRole } from "../types/auth";
+
 
 export async function register(req: Request, res: Response): Promise<void> {
   try {
@@ -45,7 +45,8 @@ export async function register(req: Request, res: Response): Promise<void> {
       email: user.email,
       role: user.role
     });
-  } catch {
+  } catch (error) {
+    console.error("Error en register:", error); //borrar
     res.status(500).json({ message: "Error al registrar usuario" });
   }
 }
@@ -80,7 +81,8 @@ export async function login(req: Request, res: Response): Promise<void> {
         role: user.role
       }
     });
-  } catch {
+  } catch (error) {
+    console.error("Error en login:", error); // pa borrar
     res.status(500).json({ message: "Error al iniciar sesión" });
   }
 }

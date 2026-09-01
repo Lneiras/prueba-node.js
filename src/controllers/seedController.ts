@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Clinic, Inventory, Medicine, User, Warehouse } from "../models";
+import { User, Clinic, Inventory, Medicine, Warehouse } from "../models";
 import { hashPassword } from "../utils/password";
 
 interface SeedFile {
@@ -33,7 +33,7 @@ interface SeedFile {
   }>;
 }
 
- 
+
 export async function uploadSeed(req: Request, res: Response): Promise<void> {
   try {
     if (!req.file) {
